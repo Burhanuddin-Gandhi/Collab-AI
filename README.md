@@ -35,6 +35,8 @@ Whether used for professional team collaboration, study groups, project discussi
 * Context-aware assistance
 * Brainstorming and idea generation
 * Productivity support during discussions
+* AI-generated meeting summaries
+* Downloadable summary reports
 
 ### File & Media Support
 
@@ -179,18 +181,17 @@ npm run dev
 
 ---
 
-## Core Concepts Implemented
+Technical Highlights
 
-* Full-Stack MERN Development
-* RESTful API Design
-* Authentication & Authorization
-* Real-Time Communication
-* WebSocket Architecture
-* Database Modeling
-* AI Integration
-* File Upload Handling
-* Frontend State Management
-* Client-Server Architecture
+• JWT-based Authentication & Authorization
+• Real-Time Messaging using Socket.IO
+• Room-Based Collaboration Architecture
+• AI-Powered Discussion Assistant
+• AI-Generated Meeting Summaries
+• Downloadable Discussion Reports
+• MongoDB Data Persistence
+• File Upload & Media Handling
+• Responsive React Frontend
 
 ---
 
