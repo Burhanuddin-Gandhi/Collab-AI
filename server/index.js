@@ -19,7 +19,12 @@ connectDB();
 const uploadsDir = path.join(__dirname, "uploads");
 if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir);
 
-app.use(cors());
+app.use(cors({
+  origin: "https://collab-chat-six.vercel.app/",
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
@@ -79,7 +84,7 @@ app.use("/api/rooms", roomRouter);
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://collab-chat-six.vercel.app/",
     methods: ["GET", "POST", "DELETE"],
   },
 });
