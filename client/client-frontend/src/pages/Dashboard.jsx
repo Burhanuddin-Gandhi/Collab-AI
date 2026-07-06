@@ -261,7 +261,7 @@ const styles = {
   },
 
   // Room section
-  roomSection: { display: "flex", gap: "0", alignItems: "stretch", marginBottom: "2.5rem" },
+ 
   roomCard: {
     flex: 1, background: "#1f2b25", border: "1px solid #3a5045",
     borderRadius: "16px", padding: "1.75rem",
