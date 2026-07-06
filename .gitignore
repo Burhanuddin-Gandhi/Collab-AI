@@ -9,7 +9,7 @@ Thumbs.db
 # Logs
 *.log
 node_modules/
-
+server/uploads/
 
 # Build outputs
 dist/
