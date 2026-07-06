@@ -4,7 +4,8 @@ import { io } from "socket.io-client";
 import emojiIcon from "../assets/emoji-icon.png";
 
 
-const socket = io("http://localhost:5000");
+import API_BASE_URL from "../config/api";
+const socket = io(API_BASE_URL);
 
 const EMOJIS = ["😊", "😂", "🔥", "👍", "❤️", "🎉", "😎", "🤔", "👏", "💯", "🚀", "✨", "😅", "🙏", "💪", "👀", "😍", "🤝", "⚡", "🎯"];
 

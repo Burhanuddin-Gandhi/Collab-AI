@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import toast from "react-hot-toast";
+import API_BASE_URL from "../config/api";
 
 export default function Dashboard() {
   const [title, setTitle] = useState("");
