@@ -86,6 +86,8 @@ const io = new Server(server, {
   cors: {
     origin: "https://collab-chat-six.vercel.app/",
     methods: ["GET", "POST", "DELETE"],
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"]
   },
 });
 
