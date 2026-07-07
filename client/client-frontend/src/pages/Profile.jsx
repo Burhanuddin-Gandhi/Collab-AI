@@ -36,14 +36,14 @@ export default function Profile() {
     const formData = new FormData();
     formData.append("file", file);
     try {
-      const uploadRes = await fetch("http://localhost:5000/api/upload", {
+      const uploadRes = await fetch(`${API_BASE_URL}/api/upload`, {
         method: "POST",
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         body: formData,
       });
       const uploadData = await uploadRes.json();
       if (!uploadData.fileUrl) { toast.error("Upload failed"); setUploadingAvatar(false); return; }
-      const updateRes = await fetch("http://localhost:5000/api/auth/profile", {
+      const updateRes = await fetch(`${API_BASE_URL}/api/auth/profile`,{
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem("token")}` },
         body: JSON.stringify({ avatarUrl: uploadData.fileUrl }),
@@ -62,7 +62,7 @@ export default function Profile() {
     if (!form.name.trim()) return toast.error("Name cannot be empty");
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/auth/profile", {
+      const res = await fetch(`${API_BASE_URL}/api/auth/profile", {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem("token")}` },
         body: JSON.stringify({ name: form.name, bio: form.bio }),

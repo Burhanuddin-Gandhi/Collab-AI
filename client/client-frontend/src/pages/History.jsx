@@ -9,20 +9,20 @@ export default function History() {
   const [downloading, setDownloading] = useState(null); // roomId of meeting being downloaded
 
   useEffect(() => {
-  const fetchHistory = async () => {
-    try {
-      const res = await fetch(`${API_BASE_URL}/api/rooms/history`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
-      const data = await res.json();
-      setMeetings(data);
-    } catch {
-      toast.error("Failed to load meeting history");
-    }
-    setLoading(false);
-  };
-  fetchHistory();
-}, []);
+    const fetchHistory = async () => {
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/rooms/history`, {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        });
+        const data = await res.json();
+        setMeetings(data);
+      } catch {
+        toast.error("Failed to load meeting history");
+      }
+      setLoading(false);
+    };
+    fetchHistory();
+  }, []);
 
   const formatDate = (dateStr) => {
     return new Date(dateStr).toLocaleDateString("en-IN", {
@@ -42,7 +42,7 @@ export default function History() {
     setDownloading(roomId);
     try {
       const res = await fetch(
-        `http://localhost:5000/api/rooms/${roomId}/summary/download`,
+        `${API_BASE_URL}/api/rooms/${roomId}/summary/download`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }

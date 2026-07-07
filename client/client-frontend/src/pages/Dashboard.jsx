@@ -43,7 +43,7 @@ export default function Dashboard() {
     if (!title.trim()) return toast.error("Enter a room title");
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/rooms", {
+      const res = await fetch(`${API_BASE_URL}/api/rooms`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem("token")}` },
         body: JSON.stringify({ title, description }),
@@ -64,7 +64,7 @@ export default function Dashboard() {
   const downloadSummary = async (roomId, title) => {
     setDownloading(roomId);
     try {
-      const res = await fetch(`http://localhost:5000/api/rooms/${roomId}/summary/download`, {
+      const res = await fetch(`${API_BASE_URL}/api/rooms/${roomId}/summary/download`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       if (!res.ok) { toast.error("Failed to download"); setDownloading(null); return; }

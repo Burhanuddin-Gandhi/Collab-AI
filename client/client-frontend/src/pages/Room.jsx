@@ -134,7 +134,7 @@ export default function Room() {
     formData.append("file", file);
 
     try {
-      const res = await fetch("http://localhost:5000/api/upload", {
+      const res = await fetch(`${API_BASE_URL}/api/upload`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -173,7 +173,7 @@ export default function Room() {
     setLoadingAI(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/ai/ask", {
+      const res = await fetch(`${API_BASE_URL}/api/ai/ask`,  {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -194,7 +194,7 @@ export default function Room() {
 
   const endMeeting = async () => {
     if (!window.confirm("End meeting for everyone?")) return;
-    await fetch(`http://localhost:5000/api/rooms/${roomId}/end`, {
+    await fetch(`${API_BASE_URL}/api/rooms/${roomId}/end`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
