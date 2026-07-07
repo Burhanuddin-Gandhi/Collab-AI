@@ -73,6 +73,7 @@ export default function Profile() {
       setUser(updatedUser);
       setEditing(false);
       toast.success("Profile updated!");
+      window.location.reload();
     } catch { toast.error("Failed to update profile"); }
     setLoading(false);
   };
