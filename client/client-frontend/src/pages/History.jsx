@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import toast from "react-hot-toast";
+import API_BASE_URL from "../config/api";
 
 export default function History() {
   const [meetings, setMeetings] = useState([]);
@@ -8,20 +9,20 @@ export default function History() {
   const [downloading, setDownloading] = useState(null); // roomId of meeting being downloaded
 
   useEffect(() => {
-    const fetchHistory = async () => {
-      try {
-        const res = await fetch("http://localhost:5000/api/rooms/history", {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        });
-        const data = await res.json();
-        setMeetings(data);
-      } catch {
-        toast.error("Failed to load meeting history");
-      }
-      setLoading(false);
-    };
-    fetchHistory();
-  }, []);
+  const fetchHistory = async () => {
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/rooms/history`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+      const data = await res.json();
+      setMeetings(data);
+    } catch {
+      toast.error("Failed to load meeting history");
+    }
+    setLoading(false);
+  };
+  fetchHistory();
+}, []);
 
   const formatDate = (dateStr) => {
     return new Date(dateStr).toLocaleDateString("en-IN", {

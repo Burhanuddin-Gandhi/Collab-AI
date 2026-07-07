@@ -2,9 +2,9 @@ import { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import emojiIcon from "../assets/emoji-icon.png";
-
-
 import API_BASE_URL from "../config/api";
+
+
 const socket = io(API_BASE_URL);
 
 const EMOJIS = ["😊", "😂", "🔥", "👍", "❤️", "🎉", "😎", "🤔", "👏", "💯", "🚀", "✨", "😅", "🙏", "💪", "👀", "😍", "🤝", "⚡", "🎯"];
@@ -49,7 +49,7 @@ export default function Room() {
   useEffect(() => {
     socket.emit("join_room", { roomId, user });
 
-    fetch(`http://localhost:5000/api/rooms/${roomId}`, {
+    fetch(`${API_BASE_URL}/api/rooms/${roomId}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     })
       .then((r) => r.json())

@@ -26,18 +26,18 @@ export default function Dashboard() {
     return "Good evening";
   };
 
-  useEffect(() => {
-    const fetchRecent = async () => {
-      try {
-        const res = await fetch("http://localhost:5000/api/rooms/history", {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        });
-        const data = await res.json();
-        setRecentMeetings(data.slice(0, 2));
-      } catch { /* silently fail */ }
-    };
-    fetchRecent();
-  }, []);
+ useEffect(() => {
+  const fetchRecent = async () => {
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/rooms/history`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+      const data = await res.json();
+      setRecentMeetings(data.slice(0, 2));
+    } catch { /* silently fail */ }
+  };
+  fetchRecent();
+}, []);
 
   const createRoom = async () => {
     if (!title.trim()) return toast.error("Enter a room title");

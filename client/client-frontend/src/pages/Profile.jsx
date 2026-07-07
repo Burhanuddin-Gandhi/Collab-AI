@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import toast from "react-hot-toast";
+import API_BASE_URL from "../config/api";
 
 export default function Profile() {
   const [user, setUser] = useState(null);
@@ -16,7 +17,7 @@ export default function Profile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/auth/profile", {
+        const res = await fetch(`${API_BASE_URL}/api/auth/profile`, {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
         const data = await res.json();
@@ -175,8 +176,8 @@ export default function Profile() {
                   </>
                 )
                 : <div style={{ ...styles.rowValue, color: user.bio ? "#e4ede8" : "#7a9688", fontStyle: user.bio ? "normal" : "italic" }}>
-                    {user.bio || "No bio added yet."}
-                  </div>
+                  {user.bio || "No bio added yet."}
+                </div>
               }
             </div>
           </div>
