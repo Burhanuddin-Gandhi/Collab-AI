@@ -62,7 +62,7 @@ export default function Profile() {
     if (!form.name.trim()) return toast.error("Name cannot be empty");
     setLoading(true);
     try {
-      const res = await fetch(`${API_BASE_URL}/api/auth/profile", {
+      const res = await fetch(`${API_BASE_URL}/api/auth/profile`, {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem("token")}` },
         body: JSON.stringify({ name: form.name, bio: form.bio }),
